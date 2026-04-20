@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>IExDeluxe</RootNamespace>
     <AssemblyName>IExDeluxe</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <MyType>WindowsForms</MyType>
     <OptionExplicit>On</OptionExplicit>
     <OptionStrict>On</OptionStrict>
@@ -38,7 +38,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Microsoft.VisualBasic" />
@@ -47,6 +46,7 @@
     <Compile Include="Program.vb" />
     <Compile Include="MainForm.vb" />
     <Compile Include="FeatureModules.vb" />
+    <Compile Include="CompatibilityProfiles.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

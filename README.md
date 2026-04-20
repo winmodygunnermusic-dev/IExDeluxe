@@ -19,11 +19,9 @@ These are implemented as safe starter stubs so you can extend each module.
 
 ## Platform notes
 
-- Primary build target: **.NET Framework 4.0 WinForms** (`x86`) for Visual Studio 2010/MSBuild 4.0 compatibility on Windows 8.1 build environments.
+- Primary build target: **.NET Framework 2.0 WinForms** (`x86`) for broader legacy compatibility and Visual Studio 2010/MSBuild 4.0 build tooling.
 - Intended legacy-friendly behavior with external player/browser integrations.
-- Extremely old OS targets (Windows 98/ME/2000) are documented as conceptual,
-  but modern VB.NET runtime support is limited. For true native support, a
-  separate legacy-native codebase is recommended.
+- Legacy tracks for Windows 98/ME/2000 and beta builds are included as explicit compatibility profiles for testing and packaging workflows.
 
 ## Build (Windows CLI)
 
@@ -40,3 +38,13 @@ Output binary (default):
 
 - [General project tutorial](tutorial.md)
 - [CLI build and release on Windows 8.1](tutorial%20cil%20build%20and%20release%20windows%208.1.md)
+
+
+## Legacy compatibility profiles
+
+The project now includes explicit compatibility profile names for:
+
+- Windows `98`, `2000`, `ME`, `XP`, `Longhorn`, `Vista`, `7`, `8`, `8.1`, `10`
+- Beta profile tags: `beta-me`, `beta-whistler` / `beta-wishter`, `beta-xp`, `beta-longhorn`, `beta-vista`, `beta-7`, `beta-8`, `beta-8.1`, `beta-10`
+
+These profiles are exposed in `CompatibilityProfiles.vb` and logged at startup to help organize legacy testing tracks.

@@ -5,10 +5,11 @@ This tutorial explains how to use and extend the generated **Internet Explorer X
 ## 1) Project structure
 
 - `InternetExplorerXDeluxe.sln` — Solution file
-- `IExDeluxe/IExDeluxe.vbproj` — VB.NET WinForms project (.NET Framework 4.0, x86, Visual Studio 2010 compatible)
+- `IExDeluxe/IExDeluxe.vbproj` — VB.NET WinForms project (.NET Framework 2.0, x86, Visual Studio 2010 compatible)
 - `IExDeluxe/Program.vb` — Application startup entry point
 - `IExDeluxe/MainForm.vb` — Main UI and feature button handlers
 - `IExDeluxe/FeatureModules.vb` — Helper modules (URL builder + M3U parsing)
+- `IExDeluxe/CompatibilityProfiles.vb` — Legacy OS and beta profile list used for testing tracks
 
 ## 2) Run from Visual Studio 2010
 

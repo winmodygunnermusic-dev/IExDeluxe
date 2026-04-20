@@ -5,12 +5,12 @@ Imports System.IO
 Namespace IExDeluxe
     Friend Module FeatureModules
         Friend Sub OpenLink(url As String)
-            If String.IsNullOrWhiteSpace(url) Then Throw New ArgumentException("URL is required.")
+            If String.IsNullOrEmpty(url) OrElse url.Trim().Length = 0 Then Throw New ArgumentException("URL is required.")
             Process.Start(url)
         End Sub
 
         Friend Sub OpenFile(path As String)
-            If String.IsNullOrWhiteSpace(path) OrElse Not File.Exists(path) Then
+            If String.IsNullOrEmpty(path) OrElse path.Trim().Length = 0 OrElse Not File.Exists(path) Then
                 Throw New FileNotFoundException("File not found.", path)
             End If
 
@@ -18,7 +18,7 @@ Namespace IExDeluxe
         End Sub
 
         Friend Function BuildYouTubeUrl(queryOrUrl As String) As String
-            If String.IsNullOrWhiteSpace(queryOrUrl) Then
+            If String.IsNullOrEmpty(queryOrUrl) OrElse queryOrUrl.Trim().Length = 0 Then
                 Return "https://www.youtube.com"
             End If
 
@@ -30,7 +30,7 @@ Namespace IExDeluxe
         End Function
 
         Friend Function BuildWaybackUrl(targetUrl As String) As String
-            If String.IsNullOrWhiteSpace(targetUrl) Then
+            If String.IsNullOrEmpty(targetUrl) OrElse targetUrl.Trim().Length = 0 Then
                 Return "https://web.archive.org"
             End If
 
@@ -38,7 +38,7 @@ Namespace IExDeluxe
         End Function
 
         Friend Function BuildInternetArchiveVideoSearch(query As String) As String
-            If String.IsNullOrWhiteSpace(query) Then
+            If String.IsNullOrEmpty(query) OrElse query.Trim().Length = 0 Then
                 Return "https://archive.org/details/movies"
             End If
 
@@ -46,7 +46,7 @@ Namespace IExDeluxe
         End Function
 
         Friend Function ParseM3uCount(content As String) As Integer
-            If String.IsNullOrWhiteSpace(content) Then Return 0
+            If String.IsNullOrEmpty(content) OrElse content.Trim().Length = 0 Then Return 0
 
             Dim lines = content.Split({ControlChars.Cr, ControlChars.Lf}, StringSplitOptions.RemoveEmptyEntries)
             Dim count As Integer = 0

@@ -45,6 +45,7 @@ Namespace IExDeluxe
 
             Log("IExDeluxe starter loaded.")
             Log("Enter URL/file/query above, then click feature buttons.")
+            Log("Compatibility profiles: " & String.Join(", ", CompatibilityProfiles.GetSupportedProfiles()))
         End Sub
 
         Private Sub AddButton(parent As Control, text As String, handler As EventHandler)

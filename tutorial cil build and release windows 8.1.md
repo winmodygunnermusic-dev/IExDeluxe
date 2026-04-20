@@ -6,9 +6,9 @@ This guide shows how to build and release **IExDeluxe** from command line on **W
 
 Install one of the following:
 
-- Visual Studio 2010 with Visual Basic tooling and .NET Framework 4.0 targeting pack
+- Visual Studio 2010 with Visual Basic tooling and .NET Framework 2.0 targeting pack
 
-> This project is configured for Visual Studio 2010-era project format and MSBuild 4.0, which can be used in Windows 8.1 build environments.
+> This project is configured for Visual Studio 2010-era project format, MSBuild 4.0, and a .NET 2.0 target for broader legacy compatibility testing.
 
 ## 2) Open Visual Studio 2010 Command Prompt
 
@@ -85,7 +85,7 @@ Smoke test checklist:
 
 ### Missing .NET Framework targeting pack
 
-- Install `.NET Framework 4.0` targeting pack/SDK and repair Visual Studio 2010 features if missing.
+- Install `.NET Framework 2.0` targeting pack/SDK and repair Visual Studio 2010 features if missing.
 
 ### Platform mismatch warnings
 
