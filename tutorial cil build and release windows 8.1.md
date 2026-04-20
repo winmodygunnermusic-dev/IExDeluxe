@@ -1,100 +1,41 @@
-# Tutorial: CLI Build and Release on Windows 8.1
+# CLI build and release (Windows 8.1)
 
-This guide shows how to build and release **IExDeluxe** from command line on **Windows 8.1**.
+## Prerequisites
 
-## 1) Prerequisites
+- Visual Studio Build Tools 2019/2022 (or full VS)
+- .NET Framework 4.7.2 targeting pack
+- NuGet restore capability
+- Inno Setup (`iscc.exe`)
 
-Install one of the following:
-
-- Visual Studio 2010 with Visual Basic tooling and .NET Framework 2.0 targeting pack
-
-> This project is configured for Visual Studio 2010-era project format, MSBuild 4.0, and a .NET 2.0 target for broader legacy compatibility testing.
-
-## 2) Open Visual Studio 2010 Command Prompt
-
-Use:
-
-- **Visual Studio Command Prompt (2010)** (recommended)
-
-Or call `VsVars32.bat` manually:
+## 1) Build x86 and x64
 
 ```bat
-"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\VsVars32.bat"
+msbuild XDeluxe.sln /p:Configuration=Release-x86 /p:Platform=x86 /t:Build
+msbuild XDeluxe.sln /p:Configuration=Release-x64 /p:Platform=x64 /t:Build
 ```
 
-## 3) Build commands
-
-From repository root (where `InternetExplorerXDeluxe.sln` exists):
-
-### Debug build
+## 2) Stage binaries
 
 ```bat
-msbuild InternetExplorerXDeluxe.sln /t:Build /p:Configuration=Debug /p:Platform=x86 /m
+copy XDeluxe.UI\bin\Release-x86\XDeluxe.exe release\bin\x86\
+copy XDeluxe.UI\bin\Release-x64\XDeluxe.exe release\bin\x64\
 ```
 
-### Release build
+Copy NuGet/runtime-native payloads:
+- CefSharp runtime files to each arch folder
+- LibVLC native files (`libvlc.dll`, `libvlccore.dll`, `plugins`) to each arch folder
+- `ruffle.js` + `sample.swf` into `release\ruffle\`
+
+## 3) Build installer
 
 ```bat
-msbuild InternetExplorerXDeluxe.sln /t:Build /p:Configuration=Release /p:Platform=x86 /m
+iscc installer\XDeluxe.iss
 ```
 
-## 4) Output locations
+## 4) Smoke test
 
-Build artifacts are created at:
-
-- `IExDeluxe\bin\Debug\IExDeluxe.exe`
-- `IExDeluxe\bin\Release\IExDeluxe.exe`
-
-## 5) Clean + rebuild (recommended before release)
-
-```bat
-msbuild InternetExplorerXDeluxe.sln /t:Clean /p:Configuration=Release /p:Platform=x86
-msbuild InternetExplorerXDeluxe.sln /t:Rebuild /p:Configuration=Release /p:Platform=x86 /m
-```
-
-## 6) Minimal release package
-
-Create a folder such as `release\IExDeluxe-1.0.0\` and copy:
-
-- `IExDeluxe.exe`
-- `IExDeluxe.exe.config` (if generated)
-- any required runtime/player dependencies you add later
-
-Optional zip command (PowerShell):
-
-```powershell
-Compress-Archive -Path .\release\IExDeluxe-1.0.0\* -DestinationPath .\release\IExDeluxe-1.0.0-win8.1.zip -Force
-```
-
-## 7) Verify on clean Windows 8.1 target
-
-Smoke test checklist:
-
-1. App launches without crash.
-2. Link open works.
-3. File open works.
-4. YouTube/Wayback/Archive launch correct URLs.
-5. IPTV parser reads local `.m3u` file.
-
-## 8) Troubleshooting
-
-### `msbuild` not found
-
-- Use a Visual Studio Developer Command Prompt.
-- Confirm `where msbuild` returns a path.
-
-### Missing .NET Framework targeting pack
-
-- Install `.NET Framework 2.0` targeting pack/SDK and repair Visual Studio 2010 features if missing.
-
-### Platform mismatch warnings
-
-- Build with `/p:Platform=x86` to match project configuration.
-
-## 9) Suggested CI command line
-
-For scripted CI/release job:
-
-```bat
-msbuild InternetExplorerXDeluxe.sln /t:Rebuild /p:Configuration=Release /p:Platform=x86 /m /verbosity:minimal
-```
+- launch installed app
+- test YouTube/Wayback in embedded browser
+- test local file playback in VideoView
+- test IPTV M3U playback
+- test SWF wrapper loading

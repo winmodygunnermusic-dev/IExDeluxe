@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>XDeluxe SWF Wrapper</title>
+  <script src="ruffle.js"></script>
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; background: #111; }
+    #stage { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <div id="stage"></div>
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    const ruffle = window.RufflePlayer.newest();
+    const player = ruffle.createPlayer();
+    document.getElementById("stage").appendChild(player);
+    player.load("sample.swf");
+  </script>
+</body>
+</html>
