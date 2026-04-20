@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "XDeluxe.Core", "XDeluxe.Core\XDeluxe.Core.vbproj", "{AFEF43D2-2D2C-4C79-9379-4CF5BECB28FA}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "XDeluxe.UI", "XDeluxe.UI\XDeluxe.UI.vbproj", "{4F01DF90-02F4-4FB8-8DDA-4268D42F7A7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release-x64|x64 = Release-x64|x64
+		Release-x86|x86 = Release-x86|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFEF43D2-2D2C-4C79-9379-4CF5BECB28FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFEF43D2-2D2C-4C79-9379-4CF5BECB28FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFEF43D2-2D2C-4C79-9379-4CF5BECB28FA}.Release-x64|x64.ActiveCfg = Release-x64|x64
+		{AFEF43D2-2D2C-4C79-9379-4CF5BECB28FA}.Release-x64|x64.Build.0 = Release-x64|x64
+		{AFEF43D2-2D2C-4C79-9379-4CF5BECB28FA}.Release-x86|x86.ActiveCfg = Release-x86|x86
+		{AFEF43D2-2D2C-4C79-9379-4CF5BECB28FA}.Release-x86|x86.Build.0 = Release-x86|x86
+		{4F01DF90-02F4-4FB8-8DDA-4268D42F7A7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F01DF90-02F4-4FB8-8DDA-4268D42F7A7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F01DF90-02F4-4FB8-8DDA-4268D42F7A7F}.Release-x64|x64.ActiveCfg = Release-x64|x64
+		{4F01DF90-02F4-4FB8-8DDA-4268D42F7A7F}.Release-x64|x64.Build.0 = Release-x64|x64
+		{4F01DF90-02F4-4FB8-8DDA-4268D42F7A7F}.Release-x86|x86.ActiveCfg = Release-x86|x86
+		{4F01DF90-02F4-4FB8-8DDA-4268D42F7A7F}.Release-x86|x86.Build.0 = Release-x86|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
